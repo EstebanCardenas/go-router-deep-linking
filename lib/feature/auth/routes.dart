@@ -8,5 +8,13 @@ final authRoutes = [
       key: state.pageKey,
       child: const SignInView(),
     ),
+    redirect: (context, state) async {
+      if (FirebaseAuth.instance.currentUser != null) {
+        PendingDynamicLinkData? initialLink =
+            await FirebaseDynamicLinks.instance.getInitialLink();
+        return initialLink?.link.path ?? '/';
+      }
+      return null;
+    },
   ),
 ];

@@ -30,6 +30,20 @@ class SettingsView extends StatelessWidget {
               ),
               child: const Text('Display dialog'),
             ),
+            const SizedBox(height: 4),
+            ElevatedButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut().then(
+                      (_) => context.go(
+                        context.namedLocation(SignInView.route),
+                      ),
+                    );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red.shade800,
+              ),
+              child: const Text('Log Out'),
+            ),
           ],
         ),
       ),

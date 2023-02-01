@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "471659005550",
+    "project_id": "deeplinks-b730e",
+    "storage_bucket": "deeplinks-b730e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471659005550:android:83774f9e7c1419c9ef887f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_deep_linking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471659005550-34b9l0fht5043g69jt55p4r0ggckbvq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgLIUA70it2huDkjGy-iinjhj58zw2RPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471659005550-34b9l0fht5043g69jt55p4r0ggckbvq2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "471659005550-t6jh6a1qb7477020u3ctahnqg4md9r0b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterDeepLinking"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

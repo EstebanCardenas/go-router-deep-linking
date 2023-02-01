@@ -24,15 +24,59 @@ class AuthViewModelNotifier extends StateNotifier<AuthState>
   }
 
   Future<void> register(BuildContext context) async {
-    showLoadingModal(context);
-    await Future.delayed(const Duration(seconds: 1));
-    closeModal();
+    try {
+      onSuccess() => context.go(context.namedLocation(HomeView.route));
+      showLoadingModal(context);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: state.mail!,
+        password: state.password!,
+      );
+      closeModal();
+      onSuccess();
+    } on FirebaseAuthException catch (e) {
+      closeModal();
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Failed to register'),
+          content: Text(e.message ?? ''),
+          actions: [
+            TextButton(
+              onPressed: Navigator.of(context).pop,
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   Future<void> signIn(BuildContext context) async {
-    showLoadingModal(context);
-    await Future.delayed(const Duration(seconds: 1));
-    closeModal();
+    try {
+      onSuccess() => context.go(context.namedLocation(HomeView.route));
+      showLoadingModal(context);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: state.mail!,
+        password: state.password!,
+      );
+      closeModal();
+      onSuccess();
+    } on FirebaseAuthException catch (e) {
+      closeModal();
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Failed to sign in'),
+          content: Text(e.message ?? ''),
+          actions: [
+            TextButton(
+              onPressed: Navigator.of(context).pop,
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
 

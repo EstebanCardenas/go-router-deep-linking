@@ -8,6 +8,14 @@ final List<GoRoute> mainRoutes = [
       key: state.pageKey,
       child: const HomeView(),
     ),
+    redirect: (context, state) async {
+      PendingDynamicLinkData? initialLink =
+          await FirebaseDynamicLinks.instance.getInitialLink();
+      if (initialLink != null) {
+        return initialLink.link.path;
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: DetailView.route,
